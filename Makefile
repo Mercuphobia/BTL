@@ -9,17 +9,24 @@ BIN := $(PRO_DIR)/bin
 #cach2
 SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
 OBJ_FILES := $(SRC_FILES:$(SRC_DIR)/%.c=$(OUTPUT_DIR)/%.o)
-
-build: $(OBJ_FILES)
+ 
+build: $(OBJ_FILES) | $(BIN) $(OUTPUT_DIR)
 	$(CC) $(OBJ_FILES) -o $(BIN)/app
 
 $(OUTPUT_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) -c $< -o $@ -I$(LIB_DIR)
 
+$(BIN):
+	mkdir -p $(BIN)
+
+$(OUTPUT_DIR):
+	mkdir -p $(OUTPUT_DIR)
+
 clean:
 	rm -f $(OUTPUT_DIR)/*
 	rm -f $(BIN)/*
 
+#
 # cach1:
 # build: main.o hello.o
 # #	$(CC) output/main.o output/hello.o -o $(BIN)/app
