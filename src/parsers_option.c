@@ -49,6 +49,9 @@
 
 static int verbose_flag;
 
+// bien kiem tra de ko chay truong trinh in ra hello
+int stop_execution = 0;
+
 void parsers_option(int argc, char *argv[])
 {
     int c;
@@ -69,11 +72,12 @@ void parsers_option(int argc, char *argv[])
                 {"create", required_argument, 0, 'c'},
                 {"file", required_argument, 0, 'f'},
                 {"test-x", required_argument, 0, 'x'},
+                {"help", no_argument, 0, 'h'},
                 {0, 0, 0, 0}};
         /* getopt_long stores the option index here. */
         int option_index = 0;
 
-        c = getopt_long(argc, argv, "abc:d:f:x:",
+        c = getopt_long(argc, argv, "abc:d:f:x:h",
                         long_options, &option_index);
 
         /* Detect the end of the options. */
@@ -93,26 +97,45 @@ void parsers_option(int argc, char *argv[])
             break;
 
         case 'a':
+            stop_execution = 1;
             printf("lua chon a\n");
             break;
 
         case 'b':
+            stop_execution = 1;
             printf("lua chon b\n");
             break;
 
         case 'c':
+            stop_execution = 1;
             printf("option -c with value %s\n", optarg);
             break;
 
         case 'd':
+            stop_execution = 1;
             printf("option -d with value = `%s'\n", optarg);
             break;
 
         case 'f':
+            stop_execution = 1;
             printf("option -f with value =`%s'\n", optarg);
             break;
+
         case 'x':
+            stop_execution = 1;
             printf("option -x with value = `%s'\n", optarg);
+            break;
+
+        case 'h':
+            stop_execution = 1;
+            printf("Usage: %s [options] [target]...\n", argv[0]);
+            printf("Options:\n");
+            printf("  -a, --add          Lua chon a\n");
+            printf("  -b, --append       Lua chon b\n");
+            printf("  -c, --create <val> Lua chon c\n");
+            printf("  -f, --delete <val> Lua chon f\n");
+            printf("  -x, --test-x <val> Lua chon x\n");
+            printf("  -h, --help <val>   Lua chon h\n");
             break;
 
         case '?':
@@ -120,7 +143,8 @@ void parsers_option(int argc, char *argv[])
             break;
 
         default:
-            abort();
+            // abort();
+            fprintf(stderr, "Usage: %s [-t nsecs] [-n] name\n", argv[0]);
         }
     }
 
@@ -144,5 +168,5 @@ void parsers_option(int argc, char *argv[])
         putchar('\n');
     }
 
-    exit(0);
+    // exit(0);
 }
