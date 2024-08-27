@@ -11,11 +11,10 @@ CFLAGS := -g
 LDFLAGS := 
 
 
-#cach2
 SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
 
 OBJ_FILES := $(SRC_FILES:$(SRC_DIR)/%.c=$(OUTPUT_DIR)/%.o)
-$(warning $(OBJ_FILES)) # in ra gia tri bien
+# $(warning $(OBJ_FILES))
 
 
 all: $(OBJ_FILES) | $(BIN) $(OUTPUT_DIR)

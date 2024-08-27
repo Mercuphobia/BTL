@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "strings_process": "c",
+        "stdlib.h": "c",
+        "stdio.h": "c"
+    },
+    "C_Cpp.dimInactiveRegions": false
+}
