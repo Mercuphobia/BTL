@@ -5,7 +5,8 @@ const char *log_level_strings[] =
         "NONE",
         "ERROR",
         "WARN",
-        "DEBUG"};
+        "DEBUG"
+    };
 
 unsigned char log_run_level;
 char buffer[1000];

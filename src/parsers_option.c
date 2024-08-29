@@ -11,20 +11,20 @@ int scan_option = 0;
 void print_help(){
     printf("Options:\n");
     printf("  -d, --debug <val>     Set log level (0=Disabled, 1=Error, 2=Warn, 3=Debug)\n");
-    printf("  -i, --interface <val> Scan interface (None=all, 1=2G, 2=5G)\n");
+    printf("  -i, --interface<val> Scan interface (None=all, 1=2G, 2=5G)\n");
     printf("  -h, --help            Print message and exit\n");
 }
 
-void scan_wifi() {
-    if (scan_option == 1) {
+void scan_wifi(int scan_option) {
+    if(scan_option == 0){
+        printf("Scanning 2G and 5G...\n");
+    }
+    else if (scan_option == 1) {
         //scan 2G
         printf("Scanning 2G...\n");
     } else if (scan_option == 2) {
         //scan 5G
         printf("Scanning 5G...\n");
-    } else {
-        // both
-        printf("Scanning both 2G and 5G...\n");
     }
 }
 
@@ -78,7 +78,8 @@ void parsers_option(int argc, char *argv[])
             else{
                 scan_option = 0;
             }
-            scan_wifi();
+            printf("scan_option = %d\n", scan_option);
+            scan_wifi(scan_option);
             break;
 
         case 'h':
@@ -102,8 +103,6 @@ void parsers_option(int argc, char *argv[])
         printf("non-option ARGV-elements: ");
         while (optind < argc)
             printf("%s ", argv[optind++]);
-            //LOG(LOG_LVL_WARN,"non-option ARGV-elements: %s",argv[optind++]);
-            //LOG(LOG_LVL_WARN, "%s ", argv[optind++]);
         putchar('\n');
     }
 }

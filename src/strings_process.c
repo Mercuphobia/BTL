@@ -1,58 +1,96 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <ctype.h>
 
-void remove_word(const char *input, const char *word_to_move, char *output) {
+char *remove_word(const char *input, const char *word_to_remove) {
     const char *start = input;
-    char temp[1024];
-    temp[0] = '\0';
+    int output_size = strlen(input) + 1;
+    char *output = malloc(output_size);
+    if (output == NULL) {
+        perror("Unable to allocate memory");
+    }
+    output[0] = '\0';
+
     while (*start) {
         const char *end = start;
         while (*end && !isspace(*end)) {
             end++;
         }
-        if (strncmp(start, word_to_move, end - start) == 0 && (end - start == strlen(word_to_move))) {
+        if (strncmp(start, word_to_remove, end - start) == 0 && (end - start) == strlen(word_to_remove)) {
             start = end;
             while (isspace(*start)) start++;
             continue;
         }
-        strncat(temp, start, end - start);
-        strcat(temp, " ");
+
+        output_size += (end - start + 2);
+        char *new_output = realloc(output, output_size);
+        if (new_output == NULL) {
+            perror("Unable to realloc memory");
+            free(output);
+        }
+        output = new_output;
+
+        strncat(output, start, end - start);
+        strcat(output, " ");
         start = end;
         while (isspace(*start)) start++;
     }
-    strcpy(output, temp);
+
+    int output_len = strlen(output);
+    if (output_len > 0 && output[output_len - 1] == ' ') {
+        output[output_len - 1] = '\0';
+    }
+
+    return output;
 }
 
-void replace_word(const char *input, const char *word_to_place, const char *replacement, char *output) {
+char *replace_word(const char *input, const char *word_to_place, const char *replacement) {
     const char *start = input;
-    char temp[1024];
-    temp[0] = '\0';
+    int output_size = strlen(input) + 1;
+    char *output = malloc(output_size);
+    if (output == NULL) {
+        perror("Unable to allocate memory");
+    }
+    output[0] = '\0';
     while (*start) {
         const char *end = start;
         while (*end && !isspace(*end)) {
             end++;
         }
         if (strncmp(start, word_to_place, end - start) == 0 && (end - start == strlen(word_to_place))) {
-            strcat(temp, replacement);
-            strcat(temp, " ");
+            strcat(output, replacement);
+            strcat(output, " ");
             start = end;
             while (isspace(*start)) start++;
             continue;
         }
-        strncat(temp, start, end - start);
-        strcat(temp, " ");
+
+        output_size += (end - start + 2);
+        char *new_output = realloc(output, output_size);
+        if (new_output == NULL) {
+            perror("Unable to realloc memory");
+            free(output);
+        }
+        output = new_output;
+
+        strncat(output, start, end - start);
+        strcat(output, " ");
         start = end;
         while (isspace(*start)) start++;
     }
-    strcpy(output, temp);
+    return output;
 }
 
-void remove_word_at_index(const char *input, int index, char *output) {
+char *remove_word_at_index(const char *input, int index) {
     const char *start = input;
     int count = 0;
-    char temp[1024];
-    temp[0] = '\0';
+    int output_size = strlen(input) + 1;
+    char *output = malloc(output_size);
+    if (output == NULL) {
+        perror("Unable to allocate memory");
+    }
+    output[0] = '\0';
     while (*start) {
         const char *end = start;
         while (*end && !isspace(*end)) {
@@ -64,43 +102,80 @@ void remove_word_at_index(const char *input, int index, char *output) {
             count++;
             continue;
         }
-        strncat(temp, start, end - start);
-        strcat(temp, " ");
+        
+        output_size += (end - start + 2);
+        char *new_output = realloc(output, output_size);
+        if (new_output == NULL) {
+            perror("Unable to realloc memory");
+            free(output);
+        }
+        output = new_output;
+
+        strncat(output, start, end - start);
+        strcat(output, " ");
         start = end;
         while (isspace(*start)) start++;
         count++;
     }
     if (count == index) {
-        strcat(temp, " ");
+        strcat(output, " ");
     }
-    strcpy(output, temp);
+    int output_len = strlen(output);
+    if (output_len > 0 && output[output_len - 1] == ' ') {
+        output[output_len - 1] = '\0';
+    }
+    return output;
 }
 
-void insert_word_index(const char *input, const char *word_to_insert, int index, char *output) {
+char *insert_word_index(const char *input, const char *word_to_insert, int index) {
     const char *start = input;
     int count = 0;
-    char temp[1024];
-    temp[0] = '\0';
+    int output_size = strlen(input) + strlen(word_to_insert) + 2;
+    char *output = malloc(output_size);
+    if (output == NULL) {
+        perror("Unable to allocate memory");
+        return NULL;
+    }
+    output[0] = '\0';
+
     while (*start) {
         const char *end = start;
         while (*end && !isspace(*end)) {
             end++;
         }
         if (count == index) {
-            strcat(temp, word_to_insert);
-            strcat(temp, " ");
+            strcat(output, word_to_insert);
+            strcat(output, " ");
         }
-        strncat(temp, start, end - start);
-        strcat(temp, " ");
+
+        int segment_length = end - start;
+        output_size += segment_length + 2;
+        char *new_output = realloc(output, output_size);
+        if (new_output == NULL) {
+            perror("Unable to realloc memory");
+            free(output);
+            return NULL;
+        }
+        output = new_output;
+
+        strncat(output, start, segment_length);
+        strcat(output, " ");
         start = end;
         while (isspace(*start)) start++;
         count++;
     }
+
     if (count == index) {
-        strcat(temp, word_to_insert);
-        strcat(temp, " ");
+        strcat(output, word_to_insert);
+        strcat(output, " ");
     }
-    strcpy(output, temp);
+
+    int output_len = strlen(output);
+    if (output_len > 0 && output[output_len - 1] == ' ') {
+        output[output_len - 1] = '\0';
+    }
+
+    return output;
 }
 
 int count_words(const char *str) {
@@ -118,13 +193,13 @@ int count_words(const char *str) {
     return count;
 }
 
-int count_char(const char *str, char ch) {
+int count_substring(const char *str, const char *substr) {
     int count = 0;
-    while (*str) {
-        if (*str == ch) {
-            count++;
-        }
-        str++;
+    const char *temp = str;
+    while ((temp = strstr(temp, substr)) != NULL) {
+        count++;
+        temp++;
     }
+
     return count;
 }
