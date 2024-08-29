@@ -28,6 +28,11 @@ int main(int argc, char *argv[])
 		printf("%d\n",count_substring(result3,"2024"));
     	free(result2);
 		free(result3);
+
+
+		// FILE *file1 = fopen("data//test.txt","w");
+		// fputs("day la vi du noi dung da bi sua\n",file1);
+		// fclose(file1);
 	}
 
 	return 0;
