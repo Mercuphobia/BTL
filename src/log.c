@@ -25,7 +25,7 @@ void log_set_level(int level)
 void printf_log(int level, const char *format, ...)
 {
 
-  if (level == log_run_level)
+  if (level <= log_run_level)
   {
     va_list args;
     va_start(args, format);

@@ -8,7 +8,7 @@ char *remove_word(const char *input, const char *word_to_remove) {
     int output_size = strlen(input) + 1;
     char *output = malloc(output_size);
     if (output == NULL) {
-        perror("Unable to allocate memory");
+        perror("Failed to allocate memory");
     }
     output[0] = '\0';
 
@@ -26,7 +26,7 @@ char *remove_word(const char *input, const char *word_to_remove) {
         output_size += (end - start + 2);
         char *new_output = realloc(output, output_size);
         if (new_output == NULL) {
-            perror("Unable to realloc memory");
+            perror("Failed to realloc memory");
             free(output);
         }
         output = new_output;
@@ -50,7 +50,7 @@ char *replace_word(const char *input, const char *word_to_place, const char *rep
     int output_size = strlen(input) + 1;
     char *output = malloc(output_size);
     if (output == NULL) {
-        perror("Unable to allocate memory");
+        perror("Failed to allocate memory");
     }
     output[0] = '\0';
     while (*start) {
@@ -69,7 +69,7 @@ char *replace_word(const char *input, const char *word_to_place, const char *rep
         output_size += (end - start + 2);
         char *new_output = realloc(output, output_size);
         if (new_output == NULL) {
-            perror("Unable to realloc memory");
+            perror("Failed to realloc memory");
             free(output);
         }
         output = new_output;
@@ -88,7 +88,7 @@ char *remove_word_at_index(const char *input, int index) {
     int output_size = strlen(input) + 1;
     char *output = malloc(output_size);
     if (output == NULL) {
-        perror("Unable to allocate memory");
+        perror("Failed to allocate memory");
     }
     output[0] = '\0';
     while (*start) {
@@ -106,7 +106,7 @@ char *remove_word_at_index(const char *input, int index) {
         output_size += (end - start + 2);
         char *new_output = realloc(output, output_size);
         if (new_output == NULL) {
-            perror("Unable to realloc memory");
+            perror("Failed to realloc memory");
             free(output);
         }
         output = new_output;
@@ -133,7 +133,7 @@ char *insert_word_index(const char *input, const char *word_to_insert, int index
     int output_size = strlen(input) + strlen(word_to_insert) + 2;
     char *output = malloc(output_size);
     if (output == NULL) {
-        perror("Unable to allocate memory");
+        perror("Failed to allocate memory");
         return NULL;
     }
     output[0] = '\0';
@@ -152,7 +152,7 @@ char *insert_word_index(const char *input, const char *word_to_insert, int index
         output_size += segment_length + 2;
         char *new_output = realloc(output, output_size);
         if (new_output == NULL) {
-            perror("Unable to realloc memory");
+            perror("Failed to realloc memory");
             free(output);
             return NULL;
         }
