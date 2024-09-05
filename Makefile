@@ -8,7 +8,7 @@ LIB_DIR := $(PRO_DIR)/include
 BIN := $(PRO_DIR)/bin
 
 CFLAGS := -g
-LDFLAGS := 
+LDFLAGS := -lm
 
 
 SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
