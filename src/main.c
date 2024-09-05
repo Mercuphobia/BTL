@@ -24,12 +24,9 @@ int main(int argc, char *argv[])
 	function1();
 
 	system("/userfs/bin/iwpriv rai0 set SiteSurvey=1");
-	printf("%s\n","cho 5s");
-	sleep(5);
+	printf("%s\n","Please wait a moment!");
+	sleep(2);
 	system("/userfs/bin/iwpriv rai0 get_site_survey > /tmp/test_code/data/neigbor_ap");
-	system("cat /tmp/test_code/data/neigbor_ap");
-	//system("pwd");
-	//system("ls -ls");
-	//system("ls");
+	//system("cat /tmp/test_code/data/neigbor_ap");
 	return 0;
 }
