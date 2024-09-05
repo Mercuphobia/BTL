@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "file_process.h": "c"
+        "file_process.h": "c",
+        "strings_process.h": "c"
     }
 }

@@ -1,0 +1,33 @@
+rai0      get_site_survey:
+Total=109 , 2G=0, 5G=109
+No  Ch  SSID                             BSSID               Security               Siganl(%)W-Mode  ExtCH  NT WPS DPID BcnRept  
+0   36  FBB_FW_GW040P_NguyenTH           a4:f4:c2:12:34:56   OPEN/NONE              94       11a/n/ac ABOVE  In  NO      NO    
+1   36  TP-Link_A957 5g                  b4:b0:24:52:a9:56   WPA2PSK/AES            57       11a/n/ac ABOVE  In YES      NO    
+2   36                                   b6:b0:24:51:a9:56   WPA2PSK/AES            60       11a/n/ac ABOVE  In  NO      NO    
+3   40  RIPT                             28:d0:f5:24:7e:0d   WPAPSKWPA2PSK/AES      26       11a/n/ac BELOW  In  NO      NO    
+4   44  Mesh_ONEHome                     a4:f4:c2:0b:44:9e   WPA2PSK/AES            94       11a/n/ac ABOVE  In  NO      NO    
+5   44  Mesh TTCN                        a4:f4:c2:0b:59:6e   WPA2PSK/AES            100      11a/n/ac ABOVE  In  NO      NO    
+6   44  Kang                             cc:71:90:4a:24:ac   WPA2PSK/AES            96       11a/n/ac ABOVE  In  NO      NO    
+7   44  Mesh6_EW302S_ha                  a4:f4:c2:0b:74:e3   WPA2PSK/AES            89       11a/n/ac ABOVE  In  NO      NO    
+8   44                                   b6:f4:c2:0b:76:02   WPA2PSK/AES            89       11a/n/ac ABOVE  In YES      NO    
+9   44                                   b0:f4:c2:0b:74:e3   WPA2PSK/AES            86       11a/n/ac ABOVE  In  NO      NO    
+10  44  Mesh5v1_69ffda_ha                cc:71:90:69:ff:dc   WPA2PSK/AES            96       11a/n/ac ABOVE  In  NO      NO    
+11  44  Mesh TTCN                        4c:12:e8:af:ae:76   WPA2PSK/AES            70       11a/n/ac ABOVE  In  NO      NO    
+12  44                                   d8:71:90:d1:58:f0   WPA2PSK/AES            78       11a/n/ac ABOVE  In  NO      NO    
+13  44  NUOC_CAM                         cc:71:90:86:9a:00   WPA2PSK/AES            99       11a/n/ac ABOVE  In YES      NO    
+14  44   Mesh5v1_69ffda_ha_5GHz          de:71:90:69:ff:dc   WPA2PSK/AES            96       11a/n/ac ABOVE  In  NO      NO    
+15  44                                   d8:71:90:6a:76:80   WPA2PSK/AES            73       11a/n/ac ABOVE  In  NO      NO    
+16  44  ManhPH Office Deco               a4:f4:c2:0b:57:8e   WPA2PSK/AES            91       11a/n/ac ABOVE  In  NO      NO    
+17  44  302_cam                          a4:f4:c2:0b:57:aa   WPA2PSK/AES            100      11a/n/ac ABOVE  In  NO      NO    
+18  44  Mesh_AP12STv1                    a4:f4:c2:0b:44:f6   WPA2PSK/AES            100      11a/n/ac ABOVE  In  NO      NO    
+19  44                                   b0:f4:c2:0b:57:aa   WPA2PSK/AES            100      11a/n/ac ABOVE  In  NO      NO    
+20  44                                   d8:71:90:ed:f5:7e   WPA2PSK/AES            73       11a/n/ac ABOVE  In  NO      NO    
+21  44                                   d8:71:90:d2:15:90   WPA2PSK/AES            70       11a/n/ac ABOVE  In  NO      NO    
+22  44                                   b0:f4:c2:0b:52:fe   WPA2PSK/AES            44       11a/n/ac ABOVE  In  NO      NO    
+23  44                                   b0:f4:c2:0b:44:f6   WPA2PSK/AES            100      11a/n/ac ABOVE  In  NO      NO    
+24  44                                   d8:71:90:d0:53:1c   WPA2PSK/AES            70       11a/n/ac ABOVE  In  NO      NO    
+25  44  DOITHUEDUYTIEN                   4c:12:e8:bb:51:6c   WPA2PSK/AES            70       11a/n/ac ABOVE  In  NO      NO    
+26  44                                   b0:f4:c2:0b:44:9e   WPA2PSK/AES            94       11a/n/ac ABOVE  In  NO      NO    
+27  44  EW302S                           4c:12:e8:3c:58:03   WPA2PSK/AES            99       11a/n/ac ABOVE  In  NO      NO    
+28  44  Mesh TTCN                        cc:71:90:96:fb:74   WPA2PSK/AES            100      11a/n/ac ABOVE  In  NO      NO    
+29  44  302S_Ha                          a4:f4:c2:0b:66:be   WPA2PSK/AES            55       11a/n/ac ABOVE  In  NO      NO

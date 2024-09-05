@@ -31,7 +31,6 @@ void scan_wifi(int scan_option) {
 void parsers_option(int argc, char *argv[])
 {
     int option;
-
     while (1)
     {
         static struct option long_options[] =
@@ -105,4 +104,7 @@ void parsers_option(int argc, char *argv[])
             printf("%s ", argv[optind++]);
         putchar('\n');
     }
+    LOG(LOG_LVL_ERROR, "%s, %d: test3\n", __func__, __LINE__);
+    LOG(LOG_LVL_WARN, "%s, %d: test4\n", __func__, __LINE__);
+    LOG(LOG_LVL_DEBUG, "%s, %d: test5\n", __func__, __LINE__);
 }

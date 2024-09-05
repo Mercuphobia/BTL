@@ -35,7 +35,7 @@ void write_to_file(FILE* file, const char* content){
         return;
     }
     fprintf(file,"%s",content);
-    printf_log(LOG_LVL_DEBUG, "Program finished\n");
+    
 }
 
 void insert_word_at_position(const char* filename,const char* word,long position){

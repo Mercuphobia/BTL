@@ -1,0 +1,28 @@
+[2024-09-04 20:04:34] [ERROR] parsers_option, 107: test3
+[2024-09-04 20:04:34] [WARN] parsers_option, 108: test4
+[2024-09-04 20:04:34] [DEBUG] parsers_option, 109: test5
+[2024-09-04 20:04:34] [ERROR] This is an error message with value: 100
+[2024-09-04 20:04:34] [ERROR] This is an error message with value: 101
+[2024-09-04 20:04:34] [WARN] This is a warning message in line 19
+[2024-09-04 20:04:34] [WARN] This is a warning message in line 20
+[2024-09-04 20:04:34] [DEBUG] main, 21: test1
+[2024-09-04 20:04:34] [DEBUG] main, 22: test2
+[2024-09-04 20:04:34] [WARN] This is a warning from function1
+[2024-09-04 20:04:34] [DEBUG] Debugging in function1, line 11
+[2024-09-04 20:05:28] [ERROR] parsers_option, 107: test3
+[2024-09-04 20:05:28] [ERROR] This is an error message with value: 100
+[2024-09-04 20:05:28] [ERROR] This is an error message with value: 101
+[2024-09-04 20:10:32] [ERROR] parsers_option, 107: test3
+[2024-09-04 20:10:32] [ERROR] This is an error message with value: 100
+[2024-09-04 20:10:32] [ERROR] This is an error message with value: 101
+[2024-09-04 20:10:44] [ERROR] parsers_option, 107: test3
+[2024-09-04 20:10:44] [WARN] parsers_option, 108: test4
+[2024-09-04 20:10:44] [DEBUG] parsers_option, 109: test5
+[2024-09-04 20:10:44] [ERROR] This is an error message with value: 100
+[2024-09-04 20:10:44] [ERROR] This is an error message with value: 101
+[2024-09-04 20:10:44] [WARN] This is a warning message in line 19
+[2024-09-04 20:10:44] [WARN] This is a warning message in line 20
+[2024-09-04 20:10:44] [DEBUG] main, 21: test1
+[2024-09-04 20:10:44] [DEBUG] main, 22: test2
+[2024-09-04 20:10:44] [WARN] This is a warning from function1
+[2024-09-04 20:10:44] [DEBUG] Debugging in function1, line 11

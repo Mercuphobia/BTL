@@ -1,5 +1,7 @@
 #include "log.h"
-
+#include "file_process.h"
+#include "time.h"
+#define LOG_FILE_PATH "./data/log.txt"
 const char *log_level_strings[] =
     {
         "NONE",
@@ -22,22 +24,37 @@ void log_set_level(int level)
   }
 }
 
+void get_current_time(char *time_str, size_t size) {
+    time_t now;
+    struct tm *tm_info;
+
+    time(&now);
+    tm_info = localtime(&now);
+    strftime(time_str, size, "%Y-%m-%d %H:%M:%S", tm_info);
+}
+
 void printf_log(int level, const char *format, ...)
 {
 
   if (level <= log_run_level)
   {
+    const char *file_path = "./data/log.txt";
+    char time_str[20];  // Đủ lớn để chứa thời gian
+    get_current_time(time_str, sizeof(time_str));
+    FILE *log_fp = open_file(LOG_FILE_PATH,"a");
+    if (log_fp == NULL)
+    {
+      perror("Failed to open log file");
+      return;
+    }
     va_list args;
     va_start(args, format);
     vsnprintf(buffer, sizeof(buffer), format, args);
     printf("[%s] %s", log_level_strings[level], buffer);
-    // printf("[%s] %s:%d: %s\n", log_level_strings[level], __func__, __LINE__, buffer);
-    //  printf("%s", buffer);
-    //  fprintf(LOG_FP, "[%s] %s:%d: ", log_level_strings[level], __FUNCTION__, __LINE__);
-    //  vfprintf(LOG_FP, fmt, args);  // Sử dụng vfprintf để xử lý chuỗi định dạng và các đối số
-    //  fprintf(LOG_FP, "\n");
-    //  fprintf(fp, "%s", buffer);
-    //  fflush(LOG_FP);
+    //fprintf(log_fp, "[%s] %s", log_level_strings[level], buffer);
+    fprintf(log_fp, "[%s] [%s] %s", time_str, log_level_strings[level], buffer);
+    fflush(log_fp);
     va_end(args);
+    fclose(log_fp);
   }
 }
