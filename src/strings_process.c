@@ -222,11 +222,13 @@ void trim_space_start(char *str){
     }
 }
 
-void trim_whitespace(char *str){
+char *trim_whitespace(char *str) {
     char *end;
-    while(*str == ' ') str++;
-    if(*str == '\0') return;
+    while(isspace((unsigned char)*str)) str++;
+    if(*str == 0)  
+        return str;
     end = str + strlen(str) - 1;
-    while(end > str && *end == ' ') end--;
-    *(end+1) = '\0';
+    while(end > str && isspace((unsigned char)*end)) end--;
+    *(end+1) = 0;
+    return str;
 }

@@ -50,32 +50,46 @@ void convert_to_json(const char *filename, int line_number)
         strncpy(channel, line + 4, 3);
         strncpy(ssid, line + 8, 32);
         strncpy(bssid, line + 41, 17);
-        //strncpy(security, line + 41, 17);
-        // strncpy(signal, line + 49, 8);
-        // strncpy(w_mode, line + 58, 7);
-        // strncpy(extch, line + 66, 6);
-        // strncpy(nt, line + 73, 2);
-        // strncpy(wps, line + 76, 2);
-        // strncpy(dpid, line + 79, 4);
-        // strncpy(bcnrept, line + 83, 8);
+        // strncpy(security, line + 41, 17);
+        //  strncpy(signal, line + 49, 8);
+        //  strncpy(w_mode, line + 58, 7);
+        //  strncpy(extch, line + 66, 6);
+        //  strncpy(nt, line + 73, 2);
+        //  strncpy(wps, line + 76, 2);
+        //  strncpy(dpid, line + 79, 4);
+        //  strncpy(bcnrept, line + 83, 8);
 
         int word_count = count_words(ssid);
-        int word_count_c = count_substring(ssid," ");
-        //printf("do dai: %d\n",word_count_c);
-        //trim_space_end(ssid);
-        //trim_space_end(index);
-        //trim_space_end(channel);
-        //trim_space_start(ssid);
+        trim_whitespace(bssid);
         trim_whitespace(ssid);
-        if(word_count >0){
+        int num_index = atoi(index);
+        if (word_count > 0)
+        {
             cJSON *ap = cJSON_CreateObject();
-            // cJSON_AddStringToObject(ap, "Index", index);
+            // cJSON_AddNumberToObject(ap, "Index", num_index);
             // cJSON_AddStringToObject(ap, "Channel", channel);
-            cJSON_AddStringToObject(ap, "SSID",ssid);
+            cJSON_AddStringToObject(ap, "SSID", ssid);
             cJSON_AddStringToObject(ap, "BSSID", bssid);
             cJSON_AddItemToArray(ap_list, ap);
         }
-        
+        int ap_count = cJSON_GetArraySize(ap_list);
+        // for (int i = 0; i < ap_count; i++)
+        // {
+        //     cJSON *ap = cJSON_GetArrayItem(ap_list, i);
+        //     if (cJSON_IsObject(ap))
+        //     {
+        //         cJSON *index = cJSON_GetObjectItem(ap, "Index");
+        //         cJSON *channel = cJSON_GetObjectItem(ap, "Channel");
+        //         cJSON *ssid = cJSON_GetObjectItem(ap, "SSID");
+        //         cJSON *bssid = cJSON_GetObjectItem(ap, "BSSID");
+
+        //         printf("AP %d:\n", i + 1);
+        //         // printf("  Index: %d\n", index ? index->valueint : -1);
+        //         // printf("  Channel: %s\n", channel ? channel->valuestring : "N/A");
+        //         printf("  SSID: %s\n", ssid ? ssid->valuestring : "N/A");
+        //         printf("  BSSID: %s\n", bssid ? bssid->valuestring : "N/A");
+        //     }
+        // }
     }
     cJSON_AddItemToObject(root, "AP_List", ap_list);
     char *json_string = cJSON_Print(root);
@@ -106,7 +120,7 @@ int main(int argc, char *argv[])
     printf("%s\n", "Please wait a moment!");
     sleep(2);
     // system("/userfs/bin/iwpriv rai0 get_site_survey > /tmp/test_code/data/neigbor_ap");
-    //  system("cat /tmp/test_code/data/neigbor_ap");
+    // system("cat /tmp/test_code/data/neigbor_ap");
 
     convert_to_json("./data/neigbor_ap", 3);
     return 0;
