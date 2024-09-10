@@ -204,10 +204,29 @@ int count_substring(const char *str, const char *substr) {
     return count;
 }
 
-void trim_space(char *str){
+void trim_space_end(char *str){
     int len = strlen(str);
     while(len > 0 && isspace((unsigned char)str[len-1])){
         str[len-1] = '\0';
         len--;
     }
+}
+void trim_space_start(char *str){
+    int index = 0;
+    int len = strlen(str);
+    while(index!= '\0' && isspace((unsigned char)str[index])){
+        index++;
+    }
+    if(index >0){
+        memmove(str, str + index, len - index + 1);
+    }
+}
+
+void trim_whitespace(char *str){
+    char *end;
+    while(*str == ' ') str++;
+    if(*str == '\0') return;
+    end = str + strlen(str) - 1;
+    while(end > str && *end == ' ') end--;
+    *(end+1) = '\0';
 }

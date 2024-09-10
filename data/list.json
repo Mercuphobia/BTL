@@ -1,92 +1,56 @@
 {
 	"AP_List":	[{
-			"Index":	"0  ",
-			"Channel":	"36",
 			"SSID":	"FBB_FW_GW040P_NguyenTH",
 			"BSSID":	"a4:f4:c2:12:34:56"
 		}, {
-			"Index":	"1  ",
-			"Channel":	"36",
 			"SSID":	"TP-Link_A957 5g",
 			"BSSID":	"b4:b0:24:52:a9:56"
 		}, {
-			"Index":	"3  ",
-			"Channel":	"40",
 			"SSID":	"RIPT",
 			"BSSID":	"28:d0:f5:24:7e:0d"
 		}, {
-			"Index":	"4  ",
-			"Channel":	"44",
 			"SSID":	"Mesh_ONEHome",
 			"BSSID":	"a4:f4:c2:0b:44:9e"
 		}, {
-			"Index":	"5  ",
-			"Channel":	"44",
 			"SSID":	"Mesh TTCN",
 			"BSSID":	"a4:f4:c2:0b:59:6e"
 		}, {
-			"Index":	"6  ",
-			"Channel":	"44",
 			"SSID":	"Kang",
 			"BSSID":	"cc:71:90:4a:24:ac"
 		}, {
-			"Index":	"7  ",
-			"Channel":	"44",
 			"SSID":	"Mesh6_EW302S_ha",
 			"BSSID":	"a4:f4:c2:0b:74:e3"
 		}, {
-			"Index":	"10 ",
-			"Channel":	"44",
 			"SSID":	"Mesh5v1_69ffda_ha",
 			"BSSID":	"cc:71:90:69:ff:dc"
 		}, {
-			"Index":	"11 ",
-			"Channel":	"44",
 			"SSID":	"Mesh TTCN",
 			"BSSID":	"4c:12:e8:af:ae:76"
 		}, {
-			"Index":	"13 ",
-			"Channel":	"44",
 			"SSID":	"NUOC_CAM",
 			"BSSID":	"cc:71:90:86:9a:00"
 		}, {
-			"Index":	"14 ",
-			"Channel":	"44",
 			"SSID":	" Mesh5v1_69ffda_ha_5GHz",
 			"BSSID":	"de:71:90:69:ff:dc"
 		}, {
-			"Index":	"16 ",
-			"Channel":	"44",
 			"SSID":	"ManhPH Office Deco",
 			"BSSID":	"a4:f4:c2:0b:57:8e"
 		}, {
-			"Index":	"17 ",
-			"Channel":	"44",
 			"SSID":	"302_cam",
 			"BSSID":	"a4:f4:c2:0b:57:aa"
 		}, {
-			"Index":	"18 ",
-			"Channel":	"44",
 			"SSID":	"Mesh_AP12STv1",
 			"BSSID":	"a4:f4:c2:0b:44:f6"
 		}, {
-			"Index":	"25 ",
-			"Channel":	"44",
 			"SSID":	"DOITHUEDUYTIEN",
 			"BSSID":	"4c:12:e8:bb:51:6c"
 		}, {
-			"Index":	"27 ",
-			"Channel":	"44",
 			"SSID":	"EW302S",
 			"BSSID":	"4c:12:e8:3c:58:03"
 		}, {
-			"Index":	"28 ",
-			"Channel":	"44",
 			"SSID":	"Mesh TTCN",
 			"BSSID":	"cc:71:90:96:fb:74"
 		}, {
-			"Index":	"29 ",
-			"Channel":	"44",
 			"SSID":	"302S_Ha",
 			"BSSID":	"a4:f4:c2:0b:66:be"
 		}]

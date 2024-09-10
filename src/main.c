@@ -47,7 +47,7 @@ void convert_to_json(const char *filename, int line_number)
         char w_mode[8] = {0}, extch[7] = {0}, nt[3] = {0}, wps[3] = {0}, dpid[5] = {0}, bcnrept[9] = {0};
 
         strncpy(index, line + 0, 3);
-        strncpy(channel, line + 4, 2);
+        strncpy(channel, line + 4, 3);
         strncpy(ssid, line + 8, 32);
         strncpy(bssid, line + 41, 17);
         //strncpy(security, line + 41, 17);
@@ -61,13 +61,17 @@ void convert_to_json(const char *filename, int line_number)
 
         int word_count = count_words(ssid);
         int word_count_c = count_substring(ssid," ");
-        printf("do dai: %d\n",word_count_c);
-        trim_space(ssid);
+        //printf("do dai: %d\n",word_count_c);
+        //trim_space_end(ssid);
+        //trim_space_end(index);
+        //trim_space_end(channel);
+        //trim_space_start(ssid);
+        trim_whitespace(ssid);
         if(word_count >0){
             cJSON *ap = cJSON_CreateObject();
-            cJSON_AddStringToObject(ap, "Index", index);
-            cJSON_AddStringToObject(ap, "Channel", channel);
-            cJSON_AddStringToObject(ap, "SSID", ssid);
+            // cJSON_AddStringToObject(ap, "Index", index);
+            // cJSON_AddStringToObject(ap, "Channel", channel);
+            cJSON_AddStringToObject(ap, "SSID",ssid);
             cJSON_AddStringToObject(ap, "BSSID", bssid);
             cJSON_AddItemToArray(ap_list, ap);
         }
@@ -104,6 +108,6 @@ int main(int argc, char *argv[])
     // system("/userfs/bin/iwpriv rai0 get_site_survey > /tmp/test_code/data/neigbor_ap");
     //  system("cat /tmp/test_code/data/neigbor_ap");
 
-    convert_to_json("./data/neigbor_ap", 3); // Đọc dữ liệu từ dòng 4
+    convert_to_json("./data/neigbor_ap", 3);
     return 0;
 }
