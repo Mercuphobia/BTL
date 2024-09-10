@@ -203,3 +203,11 @@ int count_substring(const char *str, const char *substr) {
 
     return count;
 }
+
+void trim_space(char *str){
+    int len = strlen(str);
+    while(len > 0 && isspace((unsigned char)str[len-1])){
+        str[len-1] = '\0';
+        len--;
+    }
+}
