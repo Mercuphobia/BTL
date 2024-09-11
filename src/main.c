@@ -72,25 +72,26 @@ void convert_to_json(const char *filename, int line_number)
             cJSON_AddStringToObject(ap, "BSSID", bssid);
             cJSON_AddItemToArray(ap_list, ap);
         }
-        int ap_count = cJSON_GetArraySize(ap_list);
-        // for (int i = 0; i < ap_count; i++)
-        // {
-        //     cJSON *ap = cJSON_GetArrayItem(ap_list, i);
-        //     if (cJSON_IsObject(ap))
-        //     {
-        //         cJSON *index = cJSON_GetObjectItem(ap, "Index");
-        //         cJSON *channel = cJSON_GetObjectItem(ap, "Channel");
-        //         cJSON *ssid = cJSON_GetObjectItem(ap, "SSID");
-        //         cJSON *bssid = cJSON_GetObjectItem(ap, "BSSID");
-
-        //         printf("AP %d:\n", i + 1);
-        //         // printf("  Index: %d\n", index ? index->valueint : -1);
-        //         // printf("  Channel: %s\n", channel ? channel->valuestring : "N/A");
-        //         printf("  SSID: %s\n", ssid ? ssid->valuestring : "N/A");
-        //         printf("  BSSID: %s\n", bssid ? bssid->valuestring : "N/A");
-        //     }
-        // }
     }
+    // int ap_count = cJSON_GetArraySize(ap_list);
+    // printf("number ap: %d\n", ap_count);
+    // for (int i = 0; i < ap_count; i++)
+    // {
+    //     cJSON *ap = cJSON_GetArrayItem(ap_list, i);
+    //     if (cJSON_IsObject(ap))
+    //     {
+    //         cJSON *index = cJSON_GetObjectItem(ap, "Index");
+    //         cJSON *channel = cJSON_GetObjectItem(ap, "Channel");
+    //         cJSON *ssid = cJSON_GetObjectItem(ap, "SSID");
+    //         cJSON *bssid = cJSON_GetObjectItem(ap, "BSSID");
+
+    //         printf("AP %d:\n", i + 1);
+    //         // printf("  Index: %d\n", index ? index->valueint : -1);
+    //         // printf("  Channel: %s\n", channel ? channel->valuestring : "N/A");
+    //         printf("  SSID: %s\n", ssid ? ssid->valuestring : "N/A");
+    //         printf("  BSSID: %s\n", bssid ? bssid->valuestring : "N/A");
+    //     }
+    // }
     cJSON_AddItemToObject(root, "AP_List", ap_list);
     char *json_string = cJSON_Print(root);
     printf("JSON output:\n%s\n", json_string);
@@ -116,11 +117,11 @@ int main(int argc, char *argv[])
     LOG(LOG_LVL_DEBUG, "%s, %d: test1\n", __func__, __LINE__);
     LOG(LOG_LVL_DEBUG, "%s, %d: test2\n", __func__, __LINE__);
 
-    // system("/userfs/bin/iwpriv rai0 set SiteSurvey=1");
+    system("/userfs/bin/iwpriv rai0 set SiteSurvey=1");
     printf("%s\n", "Please wait a moment!");
     sleep(2);
-    // system("/userfs/bin/iwpriv rai0 get_site_survey > /tmp/test_code/data/neigbor_ap");
-    // system("cat /tmp/test_code/data/neigbor_ap");
+    system("/userfs/bin/iwpriv rai0 get_site_survey > /tmp/test_code/data/neigbor_ap");
+    system("cat /tmp/test_code/data/neigbor_ap");
 
     convert_to_json("./data/neigbor_ap", 3);
     return 0;
