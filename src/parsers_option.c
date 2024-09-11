@@ -5,14 +5,15 @@
 #include <getopt.h>
 #include "log.h"
 
-// bien kiem tra de ko chay truong trinh in ra hello
+
 int stop_execution = 0;
 int scan_option = 0;
 void print_help(){
     printf("Options:\n");
     printf("  -d, --debug <val>     Set log level (0=Disabled, 1=Error, 2=Warn, 3=Debug)\n");
     printf("  -i, --interface<val> Scan interface (None=all, 1=2G, 2=5G)\n");
-    printf("  -h, --help            Print message and exit\n");
+    printf("  -h, --help            Print message information\n");
+    LOG(LOG_LVL_DEBUG, "%s, %d: test2\n", __func__, __LINE__);
 }
 
 void scan_wifi(int scan_option) {
@@ -26,6 +27,9 @@ void scan_wifi(int scan_option) {
         //scan 5G
         printf("Scanning 5G...\n");
     }
+    LOG(LOG_LVL_WARN, "This is a warning message in line %d\n", __LINE__);
+    LOG(LOG_LVL_DEBUG, "%s, %d: test2\n", __func__, __LINE__);
+    printf_log(LOG_LVL_WARN,"This is a warning message in line %d\n", __LINE__);
 }
 
 void parsers_option(int argc, char *argv[])

@@ -6,6 +6,7 @@
 
 
 void log_set_level(int level);
+extern unsigned char log_run_level;
 extern const char* log_level_strings[];
 void printf_log(int level,const char* format, ...);
 

@@ -42,7 +42,7 @@ void convert_to_json(const char *filename, int line_number)
     cJSON *ap_list = cJSON_CreateArray();
     while (fgets(line, sizeof(line), file))
     {
-        // Trích xuất các trường dữ liệu từ dòng
+
         char index[4] = {0}, channel[4] = {0}, ssid[33] = {0}, bssid[20] = {0}, security[23] = {0}, signal[9] = {0};
         char w_mode[8] = {0}, extch[7] = {0}, nt[3] = {0}, wps[3] = {0}, dpid[5] = {0}, bcnrept[9] = {0};
 
@@ -101,28 +101,35 @@ void convert_to_json(const char *filename, int line_number)
     {
         fprintf(output_file, "%s", json_string);
     }
-
     cJSON_Delete(root);
     free(json_string);
     fclose(file);
 }
 
 int main(int argc, char *argv[])
-{
-    parsers_option(argc, argv);
-    LOG(LOG_LVL_ERROR, "This is an error message with value: %d\n", 100);
-    LOG(LOG_LVL_ERROR, "This is an error message with value: %d\n", 101);
-    LOG(LOG_LVL_WARN, "This is a warning message in line %d\n", __LINE__);
-    LOG(LOG_LVL_WARN, "This is a warning message in line %d\n", __LINE__);
-    LOG(LOG_LVL_DEBUG, "%s, %d: test1\n", __func__, __LINE__);
-    LOG(LOG_LVL_DEBUG, "%s, %d: test2\n", __func__, __LINE__);
+{   
+    if (argc > 1)
+    {
+        parsers_option(argc, argv);
+        LOG(LOG_LVL_ERROR, "This is an error message with value: %d\n", 100);
+        // LOG(LOG_LVL_ERROR, "This is an error message with value: %d\n", 100);
+        // LOG(LOG_LVL_ERROR, "This is an error message with value: %d\n", 101);
+        // LOG(LOG_LVL_WARN, "This is a warning message in line %d\n", __LINE__);
+        // LOG(LOG_LVL_WARN, "This is a warning message in line %d\n", __LINE__);
+        // LOG(LOG_LVL_DEBUG, "%s, %d: test1\n", __func__, __LINE__);
+    }
+    else
+    {   
+        
+        LOG(LOG_LVL_DEBUG, "%s, %d: test2\n", __func__, __LINE__);
 
-    system("/userfs/bin/iwpriv rai0 set SiteSurvey=1");
-    printf("%s\n", "Please wait a moment!");
-    sleep(2);
-    system("/userfs/bin/iwpriv rai0 get_site_survey > /tmp/test_code/data/neigbor_ap");
-    system("cat /tmp/test_code/data/neigbor_ap");
-
-    convert_to_json("./data/neigbor_ap", 3);
-    return 0;
+        // system("/userfs/bin/iwpriv rai0 set SiteSurvey=1");
+        printf("%s\n", "Please wait a moment!");
+        sleep(2);
+        // system("/userfs/bin/iwpriv rai0 get_site_survey > /tmp/test_code/data/neigbor_ap");
+        // system("cat /tmp/test_code/data/neigbor_ap");
+        convert_to_json("./data/neigbor_ap", 3);
+        void print_help();
+        return 0;
+   }
 }

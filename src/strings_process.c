@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include "log.h"
 
 char *remove_word(const char *input, const char *word_to_remove) {
     const char *start = input;
@@ -41,7 +42,7 @@ char *remove_word(const char *input, const char *word_to_remove) {
     if (output_len > 0 && output[output_len - 1] == ' ') {
         output[output_len - 1] = '\0';
     }
-
+    LOG(LOG_LVL_DEBUG, "%s, %d: test6\n", __func__, __LINE__);
     return output;
 }
 
