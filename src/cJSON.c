@@ -1758,7 +1758,6 @@ static cJSON_bool print_object(const cJSON * const item, printbuffer * const out
     {
         return false;
     }
-
     *output_pointer++ = '{';
     output_buffer->depth++;
     if (output_buffer->format)
@@ -1799,8 +1798,11 @@ static cJSON_bool print_object(const cJSON * const item, printbuffer * const out
         }
         *output_pointer++ = ':';
         if (output_buffer->format)
-        {
-            *output_pointer++ = '\t';
+        {   
+            //*output_pointer++ = '\t'; code cu
+            // update code
+            *output_pointer++ = ' ';
+            //
         }
         output_buffer->offset += length;
 

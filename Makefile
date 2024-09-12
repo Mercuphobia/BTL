@@ -2,7 +2,7 @@ PRO_DIR := .
 OUTPUT_DIR := $(PRO_DIR)/output
 SRC_DIR := $(PRO_DIR)/src
 CC := /home/testserver/buildroot-2015.05/output/host/usr/bin/mips-buildroot-linux-uclibc-gcc
-#CC := gcc
+#C := gcc
 
 LIB_DIR := $(PRO_DIR)/include
 BIN := $(PRO_DIR)/bin

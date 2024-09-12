@@ -63,16 +63,26 @@ void convert_to_json(const char *filename, int line_number)
             // cJSON_AddNumberToObject(ap, "Index", num_index);
             // cJSON_AddStringToObject(ap, "Channel", channel);
             cJSON_AddStringToObject(ap, "SSID", ssid);
-            cJSON_AddItemToArray(ap_list, ap);
             cJSON_AddStringToObject(ap, "BSSID", bssid);
+            cJSON_AddItemToArray(ap_list, ap);
         }
     }
-    // int ap_count = cJSON_GetArraySize(ap_list);
-    // printf("number ap: %d\n", ap_count);
+    int ap_count = cJSON_GetArraySize(ap_list);
+    //printf("number ap: %d\n", ap_count);
     // for(int i=0;i<ap_count;i++){
     //     cJSON *ap = cJSON_GetArrayItem(ap_list, i);
     //     char *ap_string =  cJSON_Print(ap);
     //     printf("%s\n",ap_string);
+    // }
+    // for(int i=0;i<ap_count;i++){
+    //     cJSON *ap = cJSON_GetArrayItem(ap_list,i);
+    //     if(cJSON_IsObject(ap)){
+    //         printf("AP %d\n",i);
+    //         cJSON *ssid = cJSON_GetObjectItem(ap,"SSID");
+    //         printf("SSID: %s\n",ssid->valuestring);
+    //         cJSON *bssid = cJSON_GetObjectItem(ap,"BSSID");
+    //         printf("SSID: %s\n",bssid->valuestring);
+    //     }
     // }
     cJSON_AddItemToObject(root, "AP_List", ap_list);
     char *json_string = cJSON_Print(root);
@@ -81,7 +91,7 @@ void convert_to_json(const char *filename, int line_number)
     FILE *output_file = open_file("./data/list.json", "w");
     if (output_file != NULL)
     {
-        fprintf(output_file, "%s", json_string);
+        fprintf(output_file, "%s\n", json_string);
     }
     cJSON_Delete(root);
     free(json_string);
