@@ -1,7 +1,7 @@
 #include "log.h"
 #include "file_process.h"
 #include "time.h"
-#define LOG_FILE_PATH "./data/log.txt"
+#define LOG_FILE_PATH "../data/log.txt"
 
 const char *log_level_strings[] =
     {

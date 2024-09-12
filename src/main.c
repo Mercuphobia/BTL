@@ -9,6 +9,9 @@
 #include "cJSON.h"
 #include <string.h>
 
+#define OUTPUT_PATH "../data/list.json"
+#define INPUT_PATH "../data/neigbor_ap"
+
 void convert_to_json(const char *filename, int line_number)
 {
     FILE *file = open_file(filename, "r");
@@ -86,9 +89,9 @@ void convert_to_json(const char *filename, int line_number)
     // }
     cJSON_AddItemToObject(root, "AP_List", ap_list);
     char *json_string = cJSON_Print(root);
-    //printf("JSON output:\n%s\n", json_string);
+    printf("JSON output:\n%s\n", json_string);
 
-    FILE *output_file = open_file("./data/list.json", "w");
+    FILE *output_file = open_file(OUTPUT_PATH, "w");
     if (output_file != NULL)
     {
         fprintf(output_file, "%s\n", json_string);
@@ -118,7 +121,7 @@ int main(int argc, char *argv[])
         sleep(2);
         system("/userfs/bin/iwpriv rai0 get_site_survey > /tmp/test_code/data/neigbor_ap");
         //system("cat /tmp/test_code/data/neigbor_ap");
-        convert_to_json("./data/neigbor_ap", 3);
+        convert_to_json(INPUT_PATH, 3);
         return 0;
    }
 }
