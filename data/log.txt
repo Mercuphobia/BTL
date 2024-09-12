@@ -1,4 +1,4 @@
-[2024-09-11 02:55:07] [ERROR] parsers_option, 111: test3
-[2024-09-11 02:55:07] [WARN] parsers_option, 112: test4
-[2024-09-11 02:55:07] [DEBUG] parsers_option, 113: test5
-[2024-09-11 02:55:07] [ERROR] This is an error message with value: 100
+[ERROR] parsers_option, 111: test3
+[WARN] parsers_option, 112: test4
+[DEBUG] parsers_option, 113: test5
+[ERROR] This is an error message with value: 100
