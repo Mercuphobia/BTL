@@ -11,9 +11,10 @@
 #define MAC_ADDRESS_FORMAT "%x:%x:%x:%x:%x:%x"
 #define WAITING_TIME_SCAN 2
 
-int is_mac_address(const char *str) {
-    unsigned int mac[6];
-    return sscanf(str, MAC_ADDRESS_FORMAT, &mac[0], &mac[1], &mac[2], &mac[3], &mac[4], &mac[5]) == 6;
+unsigned int mac[6];
+
+int is_mac_address(const char *string) {
+    return sscanf(string, MAC_ADDRESS_FORMAT, &mac[0], &mac[1], &mac[2], &mac[3], &mac[4], &mac[5]) == 6;
 }
 
 
@@ -155,8 +156,6 @@ void convert_to_json(const char *input_file, const char *output_file) {
     while (fgets(line, sizeof(line), file)) {
         int index, channel;
         char ssid[256] = "";
-        unsigned int mac[6];
-
         if (sscanf(line, "%d %d", &index, &channel) == 2) {
             char *ptr = line;
             int end_number_position = find_end_position_of_second_number(line) + 2;
@@ -200,7 +199,7 @@ void convert_to_json(const char *input_file, const char *output_file) {
 }
 
 
-void scan_wifi_start(){
+void scan_wifi_when_start(){
     system("/userfs/bin/iwpriv rai0 set SiteSurvey=1");
     printf("%s\n", "Please wait a moment!");
     sleep(2);
@@ -208,12 +207,5 @@ void scan_wifi_start(){
     system("/userfs/bin/iwpriv ra0 set SiteSurvey=1");
     sleep(2);
     system("/userfs/bin/iwpriv ra0 get_site_survey >> /tmp/test_code/data/neigbor_ap");
-    // system("/userfs/bin/iwpriv ra0 get_site_survey > /tmp/neigbor_ap");
-    // /userfs/bin/iwpriv rai0 set SiteSurvey=1
-    // /userfs/bin/iwpriv rai0 get_site_survey >> /tmp/neigbor_ap
-    // /userfs/bin/iwpriv ra0 set SiteSurvey=1
-    // /userfs/bin/iwpriv ra0 get_site_survey >> /tmp/neigbor_ap
-    // system("/userfs/bin/iwpriv rai0 get_site_survey > /tmp/neigbor_ap");
-    // system("cat /tmp/test_code/data/neigbor_ap");
 }
 

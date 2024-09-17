@@ -21,6 +21,6 @@ void printf_json_in_file(FILE *output_file,const char *json_string);
 
 void convert_to_json(const char *input_file, const char *output_file);
 
-void scan_wifi_start();
+void scan_wifi_when_start();
 
 #endif // FILE_PROCESS_H
