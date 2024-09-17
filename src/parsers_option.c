@@ -4,7 +4,16 @@
 #include <unistd.h>
 #include <getopt.h>
 #include "log.h"
+#include "file_process.h"
 
+
+#define SITE_SURVEY_2G "/userfs/bin/iwpriv ra0 set SiteSurvey=1"
+#define SITE_SURVEY_5G "/userfs/bin/iwpriv rai0 set SiteSurvey=1"
+
+#define WRITE_2G_TO_FILE "/userfs/bin/iwpriv ra0 get_site_survey > /tmp/test_code/data/neigbor_ap"
+#define WRITE_5G_TO_FILE "/userfs/bin/iwpriv rai0 get_site_survey > /tmp/test_code/data/neigbor_ap"
+
+#define WRITE_APPEND_TO_FILE "/userfs/bin/iwpriv rai0 get_site_survey >> /tmp/test_code/data/neigbor_ap"
 
 int stop_execution = 0;
 int scan_option = 0;
@@ -18,14 +27,25 @@ void print_help(){
 
 void scan_wifi(int scan_option) {
     if(scan_option == 0){
-        printf("Scanning 2G and 5G...\n");
+        printf("scan 2G and 5G\n");
+        system(SITE_SURVEY_2G);
+        sleep(2);
+        system(WRITE_2G_TO_FILE);
+        sleep(1);
+        system(SITE_SURVEY_5G);
+        sleep(2);
+        system(WRITE_APPEND_TO_FILE);
     }
     else if (scan_option == 1) {
-        //scan 2G
-        printf("Scanning 2G...\n");
+        printf("scan 2G\n");
+        system(SITE_SURVEY_2G);
+        sleep(2);
+        system(WRITE_2G_TO_FILE);
     } else if (scan_option == 2) {
-        //scan 5G
-        printf("Scanning 5G...\n");
+        printf("scan 5G\n");
+        system(SITE_SURVEY_5G);
+        sleep(2);
+        system(WRITE_5G_TO_FILE);
     }
     LOG(LOG_LVL_WARN, "This is a warning message in line %d\n", __LINE__);
     LOG(LOG_LVL_DEBUG, "%s, %d: test2\n", __func__, __LINE__);
@@ -81,7 +101,6 @@ void parsers_option(int argc, char *argv[])
             else{
                 scan_option = 0;
             }
-            printf("scan_option = %d\n", scan_option);
             scan_wifi(scan_option);
             break;
 
@@ -92,7 +111,6 @@ void parsers_option(int argc, char *argv[])
             break;
 
         case '?':
-            /* getopt_long already printed an error message. */
             break;
 
         default:
@@ -100,7 +118,6 @@ void parsers_option(int argc, char *argv[])
         }
     }
 
-    /* Print any remaining command line arguments (not options). */
     if (optind < argc)
     {
         printf("non-option ARGV-elements: ");

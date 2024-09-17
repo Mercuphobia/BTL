@@ -13,4 +13,14 @@ void write_to_file(FILE* file, const char* content);
 
 void insert_word_at_position(const char* filename,const char* word,long position);
 
+int position_mac(const char *line);
+
+int find_end_position_of_second_number(const char *line);
+
+void printf_json_in_file(FILE *output_file,const char *json_string);
+
+void convert_to_json(const char *input_file, const char *output_file);
+
+void scan_wifi_start();
+
 #endif // FILE_PROCESS_H
