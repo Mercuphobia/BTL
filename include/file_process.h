@@ -17,9 +17,15 @@ int position_mac(const char *line);
 
 int find_end_position_of_second_number(const char *line);
 
-void printf_json_in_file(FILE *output_file,const char *json_string);
+void printf_json_in_file(const char *output_file,const char *json_string);
 
 void convert_to_json(const char *input_file, const char *output_file);
+
+void scan_and_write_wifi_5G();
+
+void scan_and_write_wifi_2G();
+
+void scan_and_write_all();
 
 void scan_wifi_when_start();
 

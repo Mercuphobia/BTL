@@ -1,4 +1,4 @@
-[ERROR] parsers_option, 111: test3
-[WARN] parsers_option, 112: test4
-[DEBUG] parsers_option, 113: test5
+[ERROR] parsers_option, 109: test3
+[WARN] parsers_option, 110: test4
+[DEBUG] parsers_option, 111: test5
 [ERROR] This is an error message with value: 100

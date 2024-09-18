@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "unistd.h": "c",
-        "hello.h": "c"
+        "hello.h": "c",
+        "file_process.h": "c"
     }
 }
